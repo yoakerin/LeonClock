@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LeonClock">
+        <!--时针占表盘半径的百分比-->
+        <attr name="hour_hand_percent" format="float"/>
+        <!--分针占表盘半径的百分比-->
+        <attr name="minute_hand_percent" format="float"/>
+        <!--秒针占表盘半径的百分比-->
+        <attr name="second_hand_percent" format="float"/>
+        <!--表盘背景 BitmapDrawable 或者 ColorDrawable-->
+        <attr name="clock_background" format="reference"/>
+        <!--表盘轮廓线颜色 默认是没有的-->
+        <attr name="clock_outline_color" format="color"/>
+        <!--时刻线颜色 每15秒-->
+        <attr name="main_tick_color" format="color"/>
+        <!--时刻线颜色 每5秒-->
+        <attr name="second_tick_color" format="color"/>
+        <!--时刻线颜色 每1秒-->
+        <attr name="third_tick_color" format="color"/>
+        <!--时针颜色-->
+        <attr name="hour_hand_color" format="color"/>
+        <!--分针颜色-->
+        <attr name="minute_hand_color" format="color"/>
+        <!--秒针颜色-->
+        <attr name="second_hand_color" format="color"/>
+    </declare-styleable>
+</resources>
