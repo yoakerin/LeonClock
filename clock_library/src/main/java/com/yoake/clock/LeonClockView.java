@@ -34,6 +34,8 @@ public class LeonClockView extends View {
     private int secondHandColor = Color.RED;
     //正中心颜色
     private int centerColor;
+    //0369字符颜色
+    private int timeTextColor = Color.BLACK;
     private SimpleDateFormat sdf;
     //warp情况下
     private int defaultSize = 500;
@@ -132,6 +134,16 @@ public class LeonClockView extends View {
                 minuteHandColor = typedArray.getColor(attr, Color.BLACK);
             } else if (attr == R.styleable.LeonClock_second_hand_color) {
                 secondHandColor = typedArray.getColor(attr, Color.RED);
+            } else if (attr == R.styleable.LeonClock_time_zero_text) {
+                zero = typedArray.getString(attr);
+            } else if (attr == R.styleable.LeonClock_time_three_text) {
+                three = typedArray.getString(attr);
+            } else if (attr == R.styleable.LeonClock_time_six_text) {
+                six = typedArray.getString(attr);
+            } else if (attr == R.styleable.LeonClock_time_nine_text) {
+                nine = typedArray.getString(attr);
+            } else if (attr == R.styleable.LeonClock_time_text_color) {
+                timeTextColor = typedArray.getColor(attr, Color.BLACK);
             }
         }
         typedArray.recycle();
@@ -212,30 +224,33 @@ public class LeonClockView extends View {
             dstBgRectF = new RectF(0, 0, finalSize, finalSize);
         }
         canvas.drawBitmap(backgroundBitmap, srcBgRect, dstBgRectF, paint);
-        paint.setColor(outlineColor);
-        paint.setStrokeCap(Paint.Cap.ROUND);
-        paint.setStyle(Paint.Style.STROKE);
-        canvas.drawCircle(halfSize, halfSize, halfSize - outlineWidth / 2, paint);
+
         canvas.save();
         for (int i = 0; i < 60; i++) {
             if ((i * 6) % 90 == 0) {
                 paint.setStrokeWidth(tickWidth);
                 paint.setColor(mainTickColor);
-                canvas.drawLine(halfSize, outlineWidth / 2, halfSize, mainTickLength, paint);
+                canvas.drawLine(halfSize, outlineWidth, halfSize, mainTickLength, paint);
             } else if ((i * 6) % 30 == 0) {
                 paint.setStrokeWidth(tickWidth / 2);
                 paint.setColor(secondTickColor);
-                canvas.drawLine(halfSize, outlineWidth / 2, halfSize, secondTickLength, paint);
+                canvas.drawLine(halfSize, outlineWidth , halfSize, secondTickLength, paint);
             } else {
                 paint.setColor(thirdTickColor);
                 paint.setStrokeWidth(tickWidth / 2);
-                canvas.drawLine(halfSize, outlineWidth / 2, halfSize, thirdTickLength, paint);
+                canvas.drawLine(halfSize, outlineWidth, halfSize, thirdTickLength, paint);
             }
             canvas.rotate(6f, halfSize, halfSize);
         }
         canvas.restore();
 
+        paint.setColor(outlineColor);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawCircle(halfSize, halfSize, halfSize - outlineWidth / 2, paint);
+
         paint.setStyle(Paint.Style.FILL);
+        paint.setColor(timeTextColor);
         float textSize = getWidth() / 10f;
         paint.setTextSize(textSize);
 

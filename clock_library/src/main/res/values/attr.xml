@@ -8,7 +8,7 @@
         <!--秒针占表盘半径的百分比-->
         <attr name="second_hand_percent" format="float"/>
         <!--表盘背景 BitmapDrawable 或者 ColorDrawable-->
-        <attr name="clock_background" format="reference"/>
+        <attr name="clock_background" format="reference|color"/>
         <!--表盘轮廓线颜色 默认是没有的-->
         <attr name="clock_outline_color" format="color"/>
         <!--时刻线颜色 每15秒-->
@@ -23,5 +23,15 @@
         <attr name="minute_hand_color" format="color"/>
         <!--秒针颜色-->
         <attr name="second_hand_color" format="color"/>
+        <!--0时刻字符-->
+        <attr name="time_zero_text" format="string"/>
+        <!--3时刻字符-->
+        <attr name="time_three_text" format="string"/>
+        <!--6时刻字符-->
+        <attr name="time_six_text" format="string"/>
+        <!--9时刻字符-->
+        <attr name="time_nine_text" format="string"/>
+        <!--0369字符颜色-->
+        <attr name="time_text_color" format="color"/>
     </declare-styleable>
 </resources>
